@@ -36,23 +36,51 @@ fn euler_2() -> usize {
 fn euler_3() -> usize {
     //The prime factors of 13195 are 5, 7, 13 and 29.
     //What is the largest prime factor of the number 600851475143 ?
-    let num: usize = 600851475143; 
-    let primes = useful_functions::sieve_of_eratosthenes(num);
-    let mut i = 2;
-    let mut largest = 0;
-    while i*i <= num {
-        if primes.contains(&i) == true {
-            if num % i == 0 {
-                if i > largest {
-                    largest = i;
-                }
-            }
+    let mut i = 1;
+    let mut n = 600851475143;
+    while i * i <= n {
+        if n % i == 0 {
+            n = n / i
         }
-        i += 1
+        i += 1;
     }
-    largest
+    return n;
 }
 
+fn euler_4() -> isize {
+    //Find the largest palindrome made from the product of two 3-digit numbers.
+    let mut palindrome = 0;
+    for i in 100..999 {
+        for j in 100..999 {
+            let product_str: String = (i * j).to_string();
+            if product_str == product_str.chars().rev().collect::<String>() && (i * j) > palindrome {
+                palindrome = i * j;
+            }
+        }
+    }
+    palindrome
+}
+
+fn euler_5() -> i32 {
+    //2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+    //What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+    //let all_primes = 2..20;
+    let mut found = false;
+    let mut num = 20;
+
+    while found == false {
+        println!("{}", num);
+        found = true;
+        for i in 2..20 {
+            if num % i != 0 {
+                found = false
+            }
+        }
+        num += 1
+    }
+    num - 1
+}
+    
 fn main() {
-    println!("{:?}", euler_3());
+    println!("{:?}", euler_5());
 }

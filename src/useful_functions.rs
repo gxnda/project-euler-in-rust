@@ -22,7 +22,3 @@ pub fn sieve_of_eratosthenes(n: usize) -> Vec<usize> {
     return primes;
     
 }
-
-pub fn is_prime(num) -> bool {
-    
-}
