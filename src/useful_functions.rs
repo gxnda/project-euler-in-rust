@@ -22,3 +22,28 @@ pub fn sieve_of_eratosthenes(n: usize) -> Vec<usize> {
     return primes;
     
 }
+
+// def is_prime(num: int) -> bool:
+//     num = abs(num)
+//     factor = 2
+//     if num < factor:
+//         return False
+//     while factor**2 < num + 1:
+//         if num % factor == 0:
+//             return False
+//         factor += 1
+//     return True
+pub fn is_prime(num: &u64) -> bool {
+    let mut factor: u64 = 2;
+    return if num < &factor {
+        false
+    } else {
+        while u64::pow(factor, 2) < (num + 1) {
+            if num % factor == 0 {
+                return false; // not prime by divisibility
+            }
+            factor += 1;
+        }
+        true
+    }
+}
