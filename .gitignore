@@ -1,2 +1,6 @@
 .replit
 replit.nix
+
+# Rust build artifacts
+/target/
+Cargo.lock
